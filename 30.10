@@ -1,0 +1,9 @@
+const siteA = ['anna', 'ivan', 'anna', 'petr', 'olga'];
+const siteB = ['ivan', 'anna', 'sergey', 'olga', 'ivan'];
+const setA = new Set(siteA);
+console.log("Set сайта A:", setA);
+console.log("Количество уникальных на сайте A:", setA.size);
+console.log("Заходил ли 'petr':", setA.has('petr'));
+const allVisitors = new Set([...siteA, ...siteB]);
+const finalArray = [...allVisitors];
+console.log("Итоговый массив:", finalArray);
