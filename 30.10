@@ -65,3 +65,30 @@ const uniqueGrades = [...gradeMap.keys()];
 console.log("\nУникальные оценки:", uniqueGrades);
 
 
+Задание 4 (2 пара)
+
+function sumTo(n) {
+  if (n === 1) {
+    return 1;
+  }
+  return n + sumTo(n - 1);
+}
+console.log(sumTo(1)); 
+console.log(sumTo(3)); 
+console.log(sumTo(5)); 
+
+
+Задание 5
+
+function power(a, n) {
+  if (n === 0) {
+    return 1;
+  }
+  return a * power(a, n - 1);
+}
+console.log(power(2, 0)); 
+console.log(power(2, 3)); 
+console.log(power(3, 2)); 
+console.log(power(5, 3)); 
+
+
