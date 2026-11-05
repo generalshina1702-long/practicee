@@ -1,0 +1,99 @@
+Задание 1 (2 пара)
+const student1 = { name: 'Алина', group: 'ВЕБ-21' };
+const student2 = { name: 'Максим', group: 'ВЕБ-22' };
+function showInfo() {
+  console.log(`Имя: ${this.name}, Группа: ${this.group}`);
+}
+student1.showInfo = showInfo;
+student2.showInfo = showInfo;
+console.log("Вызов методов объектов:");
+student1.showInfo(); 
+student2.showInfo(); 
+console.log("Вызов через отдельную переменную:");
+const detachedShowInfo = student1.showInfo;
+detachedShowInfo(); 
+
+
+
+Задание 2 
+const product = { name: 'Наушники', price: 5000 };
+function showProduct(discount, city) {
+  const finalPrice = this.price - (this.price * discount / 100);
+  console.log(`Товар: ${this.name}, Цена со скидкой: ${finalPrice}, Город: ${city}`);
+}
+showProduct.call(product, 10, 'Москва');
+showProduct.apply(product, [10, 'Москва']);
+
+
+
+Задание 3
+const employee = {
+  name: 'Дмитрий',
+  position: 'Веб-разработчик',
+  showInfo() {
+    console.log(this.name, this.position);
+  }
+};
+
+employee.showInfo();
+
+const detachedMethod = employee.showInfo;
+detachedMethod();
+
+const boundMethod = employee.showInfo.bind(employee);
+boundMethod();
+
+const employee2 = {
+  name: 'Анна',
+  position: 'Дизайнер'
+};
+
+const boundMethod2 = employee.showInfo.bind(employee2);
+boundMethod2();
+
+
+
+Задание 4 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика - this в DOM</title>
+</head>
+<body>
+    <button id="regular">Обычная функция</button>
+    <button id="arrow">Стрелочная функция</button>
+    <script src="5.11.js"></script>
+</body>
+</html>
+
+
+
+
+const btnRegular = document.getElementById('regular');
+const btnArrow = document.getElementById('arrow');
+
+btnRegular.addEventListener('click', function(event) {
+    console.log('--- Обычная функция ---');
+    console.log('this:', this); 
+    console.log('event.currentTarget:', event.currentTarget);
+});
+
+btnArrow.addEventListener('click', (event) => {
+    console.log('--- Стрелочная функция ---');
+    console.log('this:', this); 
+    console.log('event.currentTarget:', event.currentTarget); 
+});
+
+console.log("=== Исправленные обработчики ===");
+
+btnRegular.addEventListener('click', (event) => {
+    console.log('Обычная (исправленная):', event.currentTarget);
+});
+
+btnArrow.addEventListener('click', (event) => {
+    console.log('Стрелочная (исправленная):', event.currentTarget);
+});
+
+
+
