@@ -1,0 +1,51 @@
+задание 1 (2 пара)
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise Задание</title>
+</head>
+<body>
+    <h1>Задание 1: Создаём Promise вручную</h1>
+
+    <script src="5.11.js"></script>
+</body>
+</html>
+
+
+
+function checkWeather(temperature) {
+    return new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+
+            if (temperature > 0) {
+                resolve("Тепло!");
+            } else {
+                reject(new Error("Холодно!"));
+            }
+
+        }, 1000);
+    });
+}
+
+console.log("Проверяем погоду с температурой 5...");
+checkWeather(5)
+    .then((result) => {
+        console.log("Успех (then):", result);
+    })
+    .catch((error) => {
+        console.log("Ошибка (catch):", error.message);
+    });
+
+console.log("Проверяем погоду с температурой -5...");
+checkWeather(-5)
+    .then((result) => {
+        console.log("Успех (then):", result);
+    })
+    .catch((error) => {
+        console.log("Ошибка (catch):", error.message);
+    });
