@@ -1,0 +1,46 @@
+задание 3 (2 пара)
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода в Москве</title>
+</head>
+<body>
+    <h1>Погода</h1>
+    <script src="5.11.js"></script>
+</body>
+</html>
+
+
+
+ console.log("Скрипт начал работу!");
+
+function getWeather() {
+    console.log("Отправляем запрос...");
+
+    fetch('https://wttr.in/Moscow?format=j1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Данные получены:", data);
+
+            const temp = data.current_condition[0].temp_C;
+            const humidity = data.current_condition[0].humidity;
+            const weather = data.current_condition[0].lang_ru[0].value;
+
+            console.log(`Температура: ${temp}°C`);
+            console.log(`Влажность: ${humidity}%`);
+            console.log(`Погода: ${weather}`);
+        })
+        .catch(error => {
+            console.error("Ошибка запроса:", error);
+        });
+}
+
+getWeather();
