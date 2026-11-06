@@ -1,0 +1,43 @@
+задание 2
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода в Москве</title>
+</head>
+<body>
+    <h1>Задание 2. Первый запрос</h1>
+    <script src="5.11.js"></script>
+</body>
+</html>
+
+
+
+console.log("Скрипт загружен!");
+
+async function getWeather() {
+    console.log("Функция getWeather запущена...");
+    const url = 'https://wttr.in/Moscow?format=j1';
+
+    try {
+        console.log("Отправляем запрос...");
+        const response = await fetch(url);
+
+        console.log("Ответ получен! Статус:", response.status);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Данные получены:");
+        console.log(data);
+
+    } catch (error) {
+        console.error("ОШИБКА ПРИ ЗАПРОСЕ:", error);
+    }
+}
+
+getWeather();
